@@ -23,7 +23,7 @@ export default function Cart() {
         cart.forEach(product => {
             totalPrice += product.price * product.quantity
         });
-        return totalPrice;
+        return Math.round(totalPrice * 100 )/100;
     }
 
     const incrementQuantity = (product) => {
@@ -74,7 +74,7 @@ export default function Cart() {
                         <button onClick={() => incrementQuantity(product)}>+</button>
                         <p>{product.quantity}</p>
                         <button onClick={() => decrementQuantity(product)}>-</button>
-                        <p>{product.price * product.quantity}</p>
+                        <p>{Math.round((product.price * product.quantity) *100 )/100}</p>
                         <button onClick={() => removeProduct(product)}>Remove</button>
                     </div>
                 ))}
