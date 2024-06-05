@@ -3,11 +3,15 @@ import axios from 'axios'
 import '../styles/Products.css'
 import ProductsRender from './ProductsRender'
 import { element, func } from 'prop-types'
+import {useUserContext} from './AuthContext.jsx'
 
 export default function Products() {
     const [products, setProducts] = useState([])
     const [productDictionnary, setProductDictionnary] = useState([])
     const [catergory, setCategory] = useState([])
+    const {verifyToken} = useUserContext();
+
+    {verifyToken();}
 
     function CategorySelector() {
         axios.get(`https://fakestoreapi.com/products/categories`)
