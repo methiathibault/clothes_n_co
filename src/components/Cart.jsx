@@ -1,12 +1,19 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function Cart() {
     const [cart, setCart] = useState([])
-    
+
     let totalPrice = 0;
 
     useEffect(() => {
-        setCart(Object.keys(localStorage).map(key => {if(key !== "token")JSON.parse(localStorage.getItem(key))}))
+        let cart = []
+        for (let key of Object.keys(localStorage)) {
+            if (key === 'token') continue
+            cart.push(JSON.parse(localStorage.getItem(key)));
+        }
+        if (cart.length !== 0) {
+            setCart(cart)
+        }
     }, [])
     const calculateTotalPrice = () => {
         cart.forEach(product => {
@@ -24,9 +31,21 @@ export default function Cart() {
     const decrementQuantity = (product) => {
         if (product.quantity > 0) {
             product.quantity -= 1;
+            if (product.quantity == 0) return removeProduct(product);
             localStorage.setItem(product.id, JSON.stringify(product));
             setCart([...cart]);
         }
+
+    }
+
+    const removeProduct = (product) => {
+        localStorage.removeItem(product.id);
+        setCart(cart.filter(item => item.id !== product.id));
+    }
+
+    const clearCart = () => {
+        localStorage.clear();
+        setCart([]);
     }
 
     return (
@@ -40,9 +59,11 @@ export default function Cart() {
                     <p>{product.quantity}</p>
                     <button onClick={() => decrementQuantity(product)}>-</button>
                     <p>{product.price * product.quantity}</p>
+                    <button onClick={() => removeProduct(product)}>Remove</button>
                 </div>
             ))}
             <h3>Total Price: {calculateTotalPrice()}</h3>
+            <button onClick={clearCart}>Clear Cart</button>
         </div>
     )
 }

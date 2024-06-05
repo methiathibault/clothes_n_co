@@ -4,7 +4,9 @@ export default function AddButton({ product }) {
     const [quantity, setQuantity] = useState(0)
 
 
-    const add = (product) => {
+    const add = (event, product) => {
+        event.preventDefault();
+        event.stopPropagation();
         if (!product) return
         const storedProduct = localStorage.getItem(product.id);
         let newQuantity;
@@ -19,6 +21,6 @@ export default function AddButton({ product }) {
     }
 
     return (
-        <button onClick={() => add(product)}>Add to cart</button>
+        <button onClick={(event) => add(event, product)}>Add to cart</button>
     )
 }

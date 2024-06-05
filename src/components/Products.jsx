@@ -9,52 +9,48 @@ export default function Products() {
     const [productDictionnary, setProductDictionnary] = useState([])
     const [catergory, setCategory] = useState([])
 
-    function CategorySelector(){
+    function CategorySelector() {
         axios.get(`https://fakestoreapi.com/products/categories`)
-          .then(function(response) {
-            console.log(response)
-            setCategory(response.data)
-          })
-          .catch(err => console.log(err))
+            .then(function (response) {
+                console.log(response)
+                setCategory(response.data)
+            })
+            .catch(err => console.log(err))
     }
 
-    function searching(val){
+    function searching(val) {
         let newtab = []
         console.log(products)
-        productDictionnary.map(element=>{
-            let test =  element.title 
-            if(test.includes(val)){
+        productDictionnary.map(element => {
+            let test = element.title
+            if (test.includes(val)) {
                 newtab.push(element)
-                console.log (element.title)
+                console.log(element.title)
             }
-            
-    })
 
-    if(val != ""){
-        setProducts(newtab)
-    }else{
-        getAllProducts()
-        
-    }
-    
+        })
 
+        if (val != "") {
+            setProducts(newtab)
+        } else {
+            getAllProducts()
+        }
     }
 
     function getAllProducts() {
         axios.get('https://fakestoreapi.com/products')
-            .then(res => {setProducts(res.data); setProductDictionnary(res.data)})
+            .then(res => { setProducts(res.data); setProductDictionnary(res.data) })
             .catch(err => console.log(err))
     }
 
-    function CategoryElements(categor){
+    function CategoryElements(categor) {
         axios.get(`https://fakestoreapi.com/products/category/${categor}`)
-          .then(function(response) {
-            console.log(response)
-            setProducts(response.data)
-          })
-          .catch(err => console.log(err))
-        }
-    
+            .then(function (response) {
+                console.log(response)
+                setProducts(response.data)
+            })
+            .catch(err => console.log(err))
+    }
 
     useEffect(() => {
         getAllProducts()
@@ -63,16 +59,14 @@ export default function Products() {
 
     return (
         <>
-        <div>
-
-        <select>
-        <option onClick={() => getAllProducts()}>All</option>
-        {catergory.map(element =>  <option onClick={() => CategoryElements(element)} >{element}</option>)}
-        </select>
-
-        <input onChange={(e) => searching(e.target.value)}></input>
-        </div>
-       <ProductsRender products={products} />
-       </>
+            <div>
+                <input onChange={(e) => searching(e.target.value)}></input>
+                <select>
+                    <option onClick={() => getAllProducts()}>All</option>
+                    {catergory.map(element => <option onClick={() => CategoryElements(element)} >{element}</option>)}
+                </select>
+            </div>
+            <ProductsRender products={products} />
+        </>
     )
 }
