@@ -1,8 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import axios from 'axios'
-import '../styles/Products.css'
 import ProductsRender from './ProductsRender'
-import { element, func } from 'prop-types'
+import '../styles/Products.css'
 
 export default function Products() {
     const [products, setProducts] = useState([])
@@ -58,15 +57,15 @@ export default function Products() {
     }, [])
 
     return (
-        <>
-            <div>
-                <input onChange={(e) => searching(e.target.value)}></input>
-                <select>
+        <div className='product-home'>
+            <div className='search-filter'>
+                <select className='filter-select'>
                     <option onClick={() => getAllProducts()}>All</option>
                     {catergory.map(element => <option onClick={() => CategoryElements(element)} >{element}</option>)}
                 </select>
+                <input className='search-input'onChange={(e) => searching(e.target.value)}></input>
             </div>
             <ProductsRender products={products} />
-        </>
+        </div>
     )
 }

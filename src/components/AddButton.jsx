@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react'
+import '../styles/AddButton.css'
 
 export default function AddButton({ product }) {
     const [quantity, setQuantity] = useState(0)

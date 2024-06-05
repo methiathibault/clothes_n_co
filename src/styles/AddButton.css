@@ -1,0 +1,14 @@
+button {
+    background-color: #fe8d79; /* Tomato color, you can change it to match your theme */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding around the text */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor changes to hand icon when you hover over the button */
+    font-size: 1em; /* Text size */
+    transition: background-color 0.3s ease; /* Smooth transition effect when you hover over the button */
+}
+
+button:hover {
+    background-color: #f90; /* Change background color when you hover over the button */
+}
