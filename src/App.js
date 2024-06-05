@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import RouterComponents from './components/RouterComponents';
 import { UserProvider } from './components/AuthContext'
 
+
 function App() {
   return (
     <div className="App">
