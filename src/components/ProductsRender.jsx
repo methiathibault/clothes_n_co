@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import AddButton from './AddButton'
 import '../styles/ProductsRender.css'
 
+
 export default function ProductsRender({ products }) {
     return (
             <div className='products'>

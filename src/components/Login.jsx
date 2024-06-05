@@ -4,6 +4,7 @@ import {useUserContext} from './AuthContext.jsx'
 
 
 
+
 export default function Login() {
   const [username,setUsername] = useState();
   const [password,setPassword] = useState();
@@ -20,7 +21,9 @@ export default function Login() {
     .then(function (response) {
         setConnectionStatus("you are connected")
         setToken(response.data.token)
+        
         console.log(response.data.token);
+    
     })
     .catch(function (error) {
       setConnectionStatus("error password or username")
@@ -31,6 +34,7 @@ export default function Login() {
   useEffect(()=>{
     if(myToken){
       tokenSetter(myToken)
+      
     }
   },[myToken])
   
@@ -50,8 +54,12 @@ export default function Login() {
       </div>
     )
   }else{
+    
     return(
+      
+
       <div className='connected'>
+        
       already connected
       </div>
     )

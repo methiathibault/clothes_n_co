@@ -1,15 +1,18 @@
 import React, { useContext, useState, createContext } from 'react';
-
+import { useNavigate } from "react-router-dom"
 export const userContext = createContext();
+
 
 export function UserProvider({children}){
     const [token, setToken] =  useState("");
     const [isConnected, setIsConnected] =  useState(false)
+    const navigate = useNavigate();
 
     const tokenSetter = (new_token) =>{
         localStorage.setItem("token", new_token);
         setToken(new_token);
         setIsConnected(true)
+        navigate("/")
     }
 
     const verifyToken =() =>{
@@ -32,7 +35,7 @@ export function UserProvider({children}){
         setIsConnected(false);
     }
 
-    const data = {token, tokenSetter, tokenDisconnect, verifyToken};
+    const data = {token, tokenSetter, tokenDisconnect, verifyToken, isConnected};
     return <userContext.Provider value={data}>{children}</userContext.Provider>
   }
   export const useUserContext = () => useContext(userContext)
