@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import {useUserContext} from './AuthContext.jsx'
+import { useUserContext } from './AuthContext.jsx'
 import { useNavigate } from "react-router-dom"
+import '../styles/Cart.css'
 
 export default function Cart() {
     const [cart, setCart] = useState([])
-    const {isConnected} = useUserContext();
+    const { isConnected } = useUserContext();
     const navigate = useNavigate();
 
     let totalPrice = 0;
@@ -23,7 +24,7 @@ export default function Cart() {
         cart.forEach(product => {
             totalPrice += product.price * product.quantity
         });
-        return Math.round(totalPrice * 100 )/100;
+        return Math.round(totalPrice * 100) / 100;
     }
 
     const incrementQuantity = (product) => {
@@ -52,43 +53,41 @@ export default function Cart() {
         setCart([]);
     }
 
-    const buyCart = () =>{
-        
-        if(isConnected){
-            alert("Fuck you")
+    const buyCart = () => {
+        if (isConnected) {
+            alert("Thank you for your purchase !")
             clearCart();
-        }else{
+        } else {
             navigate("/login")
         }
     }
 
-    if(cart.length != 0){
+    if (cart.length != 0) {
         return (
-            <div>
-               
+            <div className='cart'>
                 {cart.map(product => (
-                    <div key={product.id}>
-                        <h3>{product.title}</h3>
-                        <img src={product.image} alt={product.title} />
-                        <p>{product.price}</p>
-                        <button onClick={() => incrementQuantity(product)}>+</button>
-                        <p>{product.quantity}</p>
-                        <button onClick={() => decrementQuantity(product)}>-</button>
-                        <p>{Math.round((product.price * product.quantity) *100 )/100}</p>
-                        <button onClick={() => removeProduct(product)}>Remove</button>
+                    <div className='cart-product' key={product.id}>
+                        <h3 className='cart-product-title'>{product.title}</h3>
+                        <img className='cart-product-image' src={product.image} alt={product.title} />
+                        <p className='cart-product-price'>{product.price}</p>
+                        <button className='button'onClick={() => decrementQuantity(product)}>-</button>
+                        <p className='cart-product-quantity'>{product.quantity}</p>
+                        <button className='button' onClick={() => incrementQuantity(product)}>+</button>
+                        <p className='cart-product-total-price'>{Math.round((product.price * product.quantity) * 100) / 100}</p>
+                        <button className='button' onClick={() => removeProduct(product)}>Remove</button>
                     </div>
                 ))}
-                <h3>Total Price: {calculateTotalPrice()}</h3>
-                <button onClick={clearCart}>Clear Cart</button>
-                <button onClick={buyCart}>Buy</button>
+                <h3 className='total-price'>Total Price: {calculateTotalPrice()}</h3>
+                <button className='button' onClick={clearCart}>Clear Cart</button>
+                <button className='button' onClick={buyCart}>Buy</button>
             </div>
         )
-    }else{
-        return(
+    } else {
+        return (
             <div>
                 <h1>Nothing in your cart</h1>
             </div>
         )
     }
-    
+
 }

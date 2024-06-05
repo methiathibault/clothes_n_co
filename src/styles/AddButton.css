@@ -1,4 +1,4 @@
-button {
+.add-button {
     background-color: #fe8d79; /* Tomato color, you can change it to match your theme */
     color: white; /* Text color */
     padding: 10px 20px; /* Padding around the text */
@@ -9,6 +9,6 @@ button {
     transition: background-color 0.3s ease; /* Smooth transition effect when you hover over the button */
 }
 
-button:hover {
+.add-button:hover {
     background-color: #f90; /* Change background color when you hover over the button */
 }

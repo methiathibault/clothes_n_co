@@ -22,6 +22,6 @@ export default function AddButton({ product }) {
     }
 
     return (
-        <button onClick={(event) => add(event, product)}>Add to cart</button>
+        <button className='add-button' onClick={(event) => add(event, product)}>Add to cart</button>
     )
 }
