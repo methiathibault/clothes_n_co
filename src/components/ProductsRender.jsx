@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import AddButton from './AddButton'
 
+
 export default function ProductsRender({ products }) {
     return (
         <div className='products-home'>
@@ -13,7 +14,7 @@ export default function ProductsRender({ products }) {
                                 <h3 className='product-title'>{product.title}</h3>
                                 <img className='product-image' src={product.image} alt={product.title} />
                                 <p className='product-price'>{product.price}</p>
-                                <AddButton product={product}/>
+                                    <AddButton product={product}/>
                             </div>
                         </Link>
                     </>
