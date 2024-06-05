@@ -30,8 +30,6 @@ export default function Login() {
 
   useEffect(()=>{
     if(myToken){
-      console.log(myToken)
-      localStorage.setItem("token", myToken);
       tokenSetter(myToken)
     }
   },[myToken])
