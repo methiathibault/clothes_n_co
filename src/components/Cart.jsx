@@ -6,7 +6,7 @@ export default function Cart() {
     let totalPrice = 0;
 
     useEffect(() => {
-        setCart(Object.keys(localStorage).map(key => JSON.parse(localStorage.getItem(key))))
+        setCart(Object.keys(localStorage).map(key => {if(key !== "token")JSON.parse(localStorage.getItem(key))}))
     }, [])
     const calculateTotalPrice = () => {
         cart.forEach(product => {
