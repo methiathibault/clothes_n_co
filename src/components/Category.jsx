@@ -7,7 +7,7 @@ import { element } from 'prop-types';
 export default function Category() {
   let { categor } = useParams();
   
-
+  const [refresh, setRefresh] = useState([false])
   const [catergory, setCategory] = useState([])
   const [productCategory, setProductCategory] = useState([])
 
@@ -19,6 +19,8 @@ export default function Category() {
     })
     .catch(err => console.log(err))
   }
+
+  
   function CategoryElements(){
     axios.get(`https://fakestoreapi.com/products/category/${categor}`)
       .then(function(response) {
@@ -28,16 +30,24 @@ export default function Category() {
       .catch(err => console.log(err))
     }
 
+  const refreshing = () =>{
+    setRefresh(true);
+  }
+
   useEffect(() => {
     CategorySelector();
     CategoryElements();
-  }, [])
+    
+    setRefresh(false);
+  }, [refresh])
 
 
   return (
   <>
     <div>Category: {categor}</div>
-    {catergory.map(element => <div>{element}</div>)}
+    <DisplayCategory/>
+    suite
+    {/* {catergory.map(element => <Link to={`/category/${element}`}> <button onClick={refreshing}>{element}</button></Link>)} */}
     {productCategory.map(product => (
                     <>
                     <Link to={`/product/${product.id}`} key={product.id}>
@@ -55,6 +65,29 @@ export default function Category() {
 
 
 
-function DisplayCategory({data}){
+function DisplayCategory(){
+  const [catergory, setCategory] = useState([])
+  
 
+  function CategorySelector(){
+    axios.get(`https://fakestoreapi.com/products/categories`)
+      .then(function(response) {
+        console.log(response)
+        setCategory(response.data)
+      })
+      .catch(err => console.log(err))
+    }
+
+    
+  
+    useEffect(() => {
+      CategorySelector();
+      
+    }, [])
+
+    return(
+      <>
+      {catergory.map(element => <Link to={`/category/${element}`}> <button >{element}</button></Link>)}
+      </>
+    )
 }
