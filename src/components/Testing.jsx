@@ -13,7 +13,7 @@ export default function Testing() {
     const navigate = useNavigate();
     const redirectTest = async ()=>{
       console.log('redirection')
-      navigate("/login")
+      
       
     }
   
