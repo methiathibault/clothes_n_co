@@ -8,7 +8,6 @@ export default function Product() {
     let { idProduit } = useParams();
     const [product, setProduct] = useState({})
 
-    console.log(idProduit)
     function getProduct() {
         axios.get(`https://fakestoreapi.com/products/${idProduit}`)
             .then(res => setProduct(res.data))
