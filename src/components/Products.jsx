@@ -23,11 +23,10 @@ export default function Products() {
     function searching(val) {
         let newtab = []
         productDictionnary.map(element => {
-            let test = element.title
-            if (test.includes(val)) {
+            let firstTab = element.title.toLowerCase()
+            if (firstTab.includes(val)) {
                 newtab.push(element)
             }
-
         })
 
         if (val != "") {
