@@ -5,10 +5,9 @@ import Product from './Product'
 import Cart from './Cart'
 import Login from './Login'
 import Testing from './Testing'
-import {useUserContext} from './AuthContext.jsx'
+import { useUserContext } from './AuthContext.jsx'
 
 export default function RouterComponents() {
-    const {tokenDisconnect} = useUserContext();
     return (
         <Routes>
             <Route path='/' element={<Products />} />
