@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import AddButton from './AddButton';
+import '../styles/Product.css'
 
 export default function Product() {
     let { idProduit } = useParams();
@@ -19,12 +20,19 @@ export default function Product() {
     }, [idProduit])
 
     return (
-        <div className='product'>
-            <h1 className='product-title'>{product.title}</h1>
-            <img className='product-image' src={product.image} alt={product.title} />
-            <p className='product-description'>{product.description}</p>
-            <p className='product-price'>{product.price}</p>
-            <AddButton product={product}/>
+        <div className='product-container'>
+            <div className='product'>
+                <div className='product-image-container'>
+                    <img className='product-image' src={product.image} alt={product.title} />
+                </div>
+                <div className='product-info'>
+                    <h1 className='product-title'>{product.title}</h1>
+                    <p className='product-category'>Category: {product.category}</p>
+                    <p className='product-description'>{product.description}</p>
+                    <p className='product-price'>{product.price}€</p>
+                    <AddButton product={product} />
+                </div>
+            </div>
         </div>
     )
 }
