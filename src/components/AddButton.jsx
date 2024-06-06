@@ -19,9 +19,10 @@ export default function AddButton({ product }) {
         }
         localStorage.setItem(product.id, JSON.stringify({ ...product, quantity: newQuantity }));
         setQuantity(newQuantity);
+        alert(`${product.title}has been added to your cart`)
     }
 
     return (
-        <button className='add-button' onClick={(event) => add(event, product)}>Add to cart</button>
+        <button className='button' onClick={(event) => add(event, product)}>Add to cart</button>
     )
 }
