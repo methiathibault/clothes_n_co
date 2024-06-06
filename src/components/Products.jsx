@@ -15,7 +15,6 @@ export default function Products() {
     function CategorySelector() {
         axios.get(`https://fakestoreapi.com/products/categories`)
             .then(function (response) {
-                console.log(response)
                 setCategory(response.data)
             })
             .catch(err => console.log(err))
@@ -27,7 +26,6 @@ export default function Products() {
             let test = element.title
             if (test.includes(val)) {
                 newtab.push(element)
-                console.log(element.title)
             }
 
         })
@@ -48,7 +46,6 @@ export default function Products() {
     function CategoryElements(categor) {
         axios.get(`https://fakestoreapi.com/products/category/${categor}`)
             .then(function (response) {
-                console.log(response)
                 setProducts(response.data)
             })
             .catch(err => console.log(err))

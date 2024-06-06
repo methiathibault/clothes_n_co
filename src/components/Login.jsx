@@ -18,8 +18,6 @@ export default function Login() {
             .then(function (response) {
                 setConnectionStatus("you are connected")
                 setToken(response.data.token)
-                console.log(response.data.token);
-
             })
             .catch(function (error) {
                 setConnectionStatus("error password or username")

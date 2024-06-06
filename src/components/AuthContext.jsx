@@ -30,7 +30,6 @@ export function UserProvider({children}){
     const tokenDisconnect = () =>{
         localStorage.removeItem("token");
         setToken("")
-
         setIsConnected(false);
     }
 
