@@ -11,7 +11,7 @@ export default function Login() {
   const [connectionStatus,setConnectionStatus] = useState();
   const [myToken,setToken] = useState('');
   const {tokenSetter, token} = useUserContext();
-  //const {token} = useUserContext();
+
 
   const connexion= () =>{
     axios.post('https://fakestoreapi.com/auth/login', {

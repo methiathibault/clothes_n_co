@@ -17,9 +17,6 @@ export default function Navbar() {
             <Link to='/login'> Login </Link>
             }
             
-            
-            
-            
             <p> { isConnected?" connected ": " not connected "} </p>
         </div>
     )

@@ -24,7 +24,6 @@ export default function Products() {
 
     function searching(val) {
         let newtab = []
-        console.log(products)
         productDictionnary.map(element => {
             let test = element.title
             if (test.includes(val)) {
