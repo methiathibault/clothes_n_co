@@ -4,8 +4,6 @@ import Products from './Products'
 import Product from './Product'
 import Cart from './Cart'
 import Login from './Login'
-import Testing from './Testing'
-import { useUserContext } from './AuthContext.jsx'
 
 export default function RouterComponents() {
     return (
@@ -14,7 +12,6 @@ export default function RouterComponents() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/product/:idProduit' element={<Product />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/testing' element={<Testing />} />
         </Routes>
     )
 }
