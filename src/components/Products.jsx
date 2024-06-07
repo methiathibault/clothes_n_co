@@ -28,7 +28,6 @@ export default function Products() {
                 newtab.push(element)
             }
         })
-
         if (val != "") {
             setProducts(newtab)
         } else {
@@ -45,7 +44,7 @@ export default function Products() {
     function CategoryElements(categor) {
         axios.get(`https://fakestoreapi.com/products/category/${categor}`)
             .then(function (response) {
-                setProducts(response.data)
+                setProducts(response.data); setProductDictionnary(response.data)
             })
             .catch(err => console.log(err))
     }
