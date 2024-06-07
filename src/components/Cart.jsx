@@ -5,8 +5,9 @@ import '../styles/Cart.css'
 
 export default function Cart() {
     const [cart, setCart] = useState([])
-    const { isConnected } = useUserContext();
+    const { isConnected, verifyToken } = useUserContext();
     const navigate = useNavigate();
+    { verifyToken(); }
 
     let totalPrice = 0;
 

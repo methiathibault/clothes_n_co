@@ -12,7 +12,7 @@ export function UserProvider({children}){
         setIsConnected(true)
         navigate("/")
     }
-    const verifyToken =() =>{
+    const verifyToken = () =>{
         const storedToken = localStorage.getItem("token");
         if (token == "" && storedToken != null ){
             setToken(storedToken)

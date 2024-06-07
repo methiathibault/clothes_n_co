@@ -3,10 +3,15 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import AddButton from './AddButton';
 import '../styles/Product.css'
+import { useUserContext } from './AuthContext.jsx'
+
 
 export default function Product() {
     let { idProduit } = useParams();
     const [product, setProduct] = useState({})
+    const { verifyToken } = useUserContext();
+
+    { verifyToken(); }
 
     function getProduct() {
         axios.get(`https://fakestoreapi.com/products/${idProduit}`)
